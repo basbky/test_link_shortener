@@ -1,15 +1,102 @@
 [tool.poetry]
 name = "test-link-shortener"
 version = "0.1.0"
-description = ""
+description = "Django 4 app which takes URL and shortens it"
 authors = ["basbky <markbasbky@gmail.com>"]
 readme = "README.md"
 packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+django = "^4.1.6"
+django-debug-toolbar = "^3.8.1"
+psycopg2-binary = "^2.9.5"
+pre-commit = "^3.0.3"
+tox = "^4.4.4"
+black = "^23.1.0"
+flake8 = "^6.0.0"
+mypy = "^0.991"
+isort = "^5.12.0"
+pytest = "^7.2.1"
+pytest-django = "^4.5.2"
+python-dotenv = "^0.21.1"
+factory-boy = "^3.2.1"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.tox]
+legacy_tox_ini = """
+    [tox]
+    min_version = 4.0
+    env_list =
+        py311
+        py310
+        py39
+        type
+
+    [testenv]
+    deps = pytest
+    commands = pytest tests
+
+    [testenv:type]
+    deps = mypy
+    commands = mypy src
+"""
+
+[tool.black]
+line-length = 79
+skip-string-normalization = true
+target-version = ['py311']
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+      \.eggs
+    | \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+)
+'''
+
+[tool.mypy]
+files = "src"
+mypy_path = "src"
+namespace_packages = true
+explicit_package_bases = true
+show_error_codes = true
+strict = true
+enable_error_code = [
+    "ignore-without-code",
+    "redundant-expr",
+    "truthy-bool",
+]
+
+[tool.isort]
+py_version = 311
+profile = "black"
+force_single_line = true
+combine_as_imports = true
+lines_between_types = 1
+lines_after_imports = 2
+src_paths = ["src", "tests"]
+extend_skip = ["setup.py"]
+known_third_party = ["poetry.core"]
+
+# pyproject.toml
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+    "integration",
+]
