@@ -47,10 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Django add-ons
-    'rest_framework',
-    'drf_yasg',
-    # Custom apps
+    # User apps
     'shortener',
 ]
 
