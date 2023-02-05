@@ -1,0 +1,40 @@
+{% extends 'shortener/navbar.html'%}
+{% load static %}
+{% block content %}
+  <link rel="stylesheet" type="text/css" href="{% static 'shortener/css/statistics.css' %}">
+  <div class="d-flex justify-content-center my-3">
+    {% if links.has_previous %}
+      <a class="btn btn-secondary" href="?sort_by={{sort_by}}&page={{ links.previous_page_number }}">&laquo; Предыдущая</a>
+    {% endif %}
+    <span class="mx-3">Страница {{ links.number }} из {{ links.paginator.num_pages }}</span>
+    {% if links.has_next %}
+      <a class="btn btn-secondary" href="?sort_by={{sort_by}}&page={{ links.next_page_number }}">Следующая &raquo;</a>
+    {% endif %}
+    <a href="?sort_by=views_counter" class="btn btn-secondary">Сортировать по возрастанию</a>
+    <a href="?sort_by=-views_counter" class="btn btn-secondary">Сортировать по убыванию</a>
+    <a href="?download_csv=True" class="btn btn-secondary">Загрузить в CSV</a>
+    <a href="?download_xlsx=True" class="btn btn-secondary">Загрузить в Excel</a>
+  </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Оригинальная ссылка</th>
+          <th>Хеш ссылки</th>
+          <th>Количество переходов</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for link in links %}
+        <tr>
+          <td>{{ link.original_url }}</td>
+          <td>{{ link.short_hash }}</td>
+          <td>{{ link.views_counter }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="report_downloads">
+
+  </div>
+{% endblock %}
