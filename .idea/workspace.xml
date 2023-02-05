@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4aa07654-c228-4bac-ab78-263dea4d6760" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/test_link_shortener.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/test_link_shortener.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shortener/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/shortener/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shortener/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/shortener/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +16,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
         <option value="HTML File" />
       </list>
     </option>
@@ -48,7 +43,8 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/basbky/Desktop/tranio_test_task&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/basbky/Desktop/test_link_shortener&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -57,6 +53,14 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/shortener/static/shortener/css" />
+      <recent name="$PROJECT_DIR$/src/templates/shortener" />
+      <recent name="$PROJECT_DIR$/src/shortener/static/shortener" />
+      <recent name="$PROJECT_DIR$/src/shortener" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -69,6 +73,9 @@
       <workItem from="1675324992361" duration="694000" />
       <workItem from="1675429383104" duration="8565000" />
       <workItem from="1675501934763" duration="427000" />
+      <workItem from="1675519518367" duration="2941000" />
+      <workItem from="1675523407180" duration="16576000" />
+      <workItem from="1675577379609" duration="31816000" />
     </task>
     <servers />
   </component>
