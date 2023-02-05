@@ -1,4 +1,7 @@
+import csv
+
 from django.core.paginator import Paginator
+from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -8,7 +11,10 @@ from django.views.generic import TemplateView
 
 from .forms import URLShortenerForm
 from .models import Link
+from .utils import create_csv_file
 from .utils import generate_short_hash
+from .utils import get_paginated_links
+from .utils import get_sorted_links
 from .utils import save_url_mapping
 
 
@@ -33,16 +39,24 @@ class RedirectView(View):
 class StatisticsView(TemplateView):
     template_name = 'shortener/statistics.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get(self, request, *args, **kwargs):
         sort_by = (
-            self.request.GET.get('sort_by', 'views_counter') or 'views_counter'
+            request.GET.get('sort_by', 'views_counter') or 'views_counter'
         )
-        links = Link.objects.all().order_by(sort_by)
+        links = get_sorted_links(sort_by)
 
-        paginator = Paginator(links, 10)
-        page = self.request.GET.get('page')
-        links = paginator.get_page(page)
+        if request.GET.get('download'):
+            create_csv_file(links)
+            file = open('statistics.csv', 'r')
+            response = HttpResponse(file, content_type='text/csv')
+            response[
+                'Content-Disposition'
+            ] = 'attachment; filename="statistics.csv"'
+            return response
 
+        page = request.GET.get('page')
+        links = get_paginated_links(links, page_number=page)
+
+        context = self.get_context_data(**kwargs)
         context['links'] = links
-        return context
+        return self.render_to_response(context)
