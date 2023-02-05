@@ -2,6 +2,8 @@ import csv
 import random
 import string
 
+import openpyxl
+
 from django.core.paginator import Paginator
 
 from .models import Link
@@ -43,3 +45,25 @@ def create_csv_file(links):
             writer.writerow(
                 [link.original_url, link.short_hash, link.views_counter]
             )
+
+
+def create_xlsx_file(data):
+    wb = openpyxl.Workbook()
+    ws = wb.active
+
+    header_row = [
+        'id',
+        'Оригинальная ссылка',
+        'Хеш ссылки',
+        'Количество переходов',
+    ]
+    for col_num, header_title in enumerate(header_row, 1):
+        ws.cell(row=1, column=col_num, value=header_title)
+
+    for row_num, data_row in enumerate(data, 2):
+        ws.cell(row=row_num, column=1, value=data_row.id)
+        ws.cell(row=row_num, column=2, value=data_row.original_url)
+        ws.cell(row=row_num, column=3, value=data_row.short_hash)
+        ws.cell(row=row_num, column=4, value=data_row.views_counter)
+
+    wb.save("statistics.xlsx")

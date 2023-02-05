@@ -1,10 +1,6 @@
-import csv
-
-from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
-from django.urls import reverse
 from django.views import View
 from django.views.generic import FormView
 from django.views.generic import TemplateView
@@ -12,7 +8,7 @@ from django.views.generic import TemplateView
 from .forms import URLShortenerForm
 from .models import Link
 from .utils import create_csv_file
-from .utils import generate_short_hash
+from .utils import create_xlsx_file
 from .utils import get_paginated_links
 from .utils import get_sorted_links
 from .utils import save_url_mapping
@@ -45,13 +41,24 @@ class StatisticsView(TemplateView):
         )
         links = get_sorted_links(sort_by)
 
-        if request.GET.get('download'):
+        if request.GET.get('download_csv'):
             create_csv_file(links)
             file = open('statistics.csv', 'r')
             response = HttpResponse(file, content_type='text/csv')
             response[
                 'Content-Disposition'
             ] = 'attachment; filename="statistics.csv"'
+            return response
+        elif request.GET.get('download_xlsx'):
+            create_xlsx_file(links)
+            file = open('statistics.xlsx', 'rb')
+            response = HttpResponse(
+                file.read(),
+                content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            )
+            response[
+                'Content-Disposition'
+            ] = 'attachment; filename="statistics.xlsx"'
             return response
 
         page = request.GET.get('page')
