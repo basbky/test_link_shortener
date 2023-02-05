@@ -1,0 +1,28 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'shortener/css/statistics.css' %}">
+<div class="container">
+  <h2 class="text-center">Статистика ссылок</h2>
+  <div class="d-flex justify-content-between my-3">
+    <a href="?sort_by=-views_counter" class="btn btn-secondary">Сортировать по возрастанию</a>
+    <a href="?sort_by=views_counter" class="btn btn-secondary">Сортировать по уменьшению</a>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Оригинальная ссылка</th>
+        <th>Хеш ссылки</th>
+        <th>Количество переходов</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for link in links %}
+      <tr>
+        <td>{{ link.original_url }}</td>
+        <td>{{ link.short_hash }}</td>
+        <td>{{ link.views_counter }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

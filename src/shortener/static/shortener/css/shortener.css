@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@900&display=swap');
+
+form {
+  padding: 40px;
+  background-color: rgba(242, 242, 242, 0.8);
+  border-radius: 30px;
+  box-shadow: 0px 0px 20px #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 20px;
+  margin: 20px 0;
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 0px 10px #ccc;
+  background-color: transparent;
+}
+
+input[type="submit"] {
+  padding: 20px 40px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 0px 10px #007bff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="submit"]:hover {
+  background-color: #0069d9;
+  box-shadow: 0px 0px 20px #0069d9;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 200px);
+}
+
+.form-field {
+  border-radius: 20px;
+  border: none;
+  background-color: #fff;
+  font-size: 16px;
+  color: #333;
+  font-family: sans-serif;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 5px darkgray;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  border-radius: 20px;
+  padding: 15px 20px;
+  font-size: 16px;
+  width: 50%;
+}
+
+.form-field:hover {
+  background-color: #ccc2c2;
+  cursor: pointer;
+}
+
+.btn-primary {
+  border-radius: 20px;
+  padding: 15px 20px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  width: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.short-link {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #fff;
+}
+
+.error {
+  display: none;
+  color: red;
+  font-size: smaller;
+}
+
+.errorlist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.errorlist li {
+  color: #ff0000;
+  font-size: 0.8em;
+  margin-top: 10px;
+}
+
+.title {
+  color: #007bff;
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 700;
+  font-family: 'Overpass', sans-serif;
+}
+
+p {
+  line-height: 1.4;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+a:link {
+  color: #007bff;
+}
+
+a:visited {
+  color: #004183;
+}
+
+a:focus {
+  border-bottom: 1px solid;
+  color: #205183;
+}
+
+a:hover {
+  border-bottom: 1px solid;
+  color: #007bff;
+}
+
+a:active {
+  color: #56a8ff;
+}

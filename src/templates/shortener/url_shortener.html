@@ -1,0 +1,25 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'shortener/css/shortener.css' %}">
+<h1 class="title">Сократитель ссылок</h1>
+<div class="form-container">
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="{% if short_hash %}Вернуться назад{% else %}Сократить ссылку{% endif %}">
+
+    {% if short_hash %}
+      <p class="short-link"><a href="{{ request.build_absolute_uri }}{% url 'url_shortener:redirect' short_hash %}">{{ request.build_absolute_uri }}{% url 'url_shortener:redirect' short_hash %}</a></p>
+    {% endif %}
+  </form>
+  <div class="form-errors">
+    {% for error in form.non_field_errors %}
+      <p class="error">{{ error }}</p>
+    {% endfor %}
+    {% for field in form %}
+      {% for error in field.errors %}
+        <p class="error">{{ field.label }}: {{ error }}</p>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>
