@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4aa07654-c228-4bac-ab78-263dea4d6760" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/tests.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/tests.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +80,7 @@
       <workItem from="1675501934763" duration="427000" />
       <workItem from="1675519518367" duration="2941000" />
       <workItem from="1675523407180" duration="16576000" />
-      <workItem from="1675577379609" duration="36895000" />
+      <workItem from="1675577379609" duration="37548000" />
     </task>
     <servers />
   </component>
