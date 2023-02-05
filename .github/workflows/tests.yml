@@ -34,4 +34,4 @@ jobs:
           poetry env use "3.11"
           poetry install --no-root
       - name: Run Tests
-        run: pytest -c pytest.ini
+        run: poetry run pytest
