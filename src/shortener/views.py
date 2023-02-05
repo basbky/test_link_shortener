@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -34,6 +35,14 @@ class StatisticsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        sort_by = self.request.GET.get('sort_by', 'views_counter')
-        context['links'] = Link.objects.all().order_by(sort_by)
+        sort_by = (
+            self.request.GET.get('sort_by', 'views_counter') or 'views_counter'
+        )
+        links = Link.objects.all().order_by(sort_by)
+
+        paginator = Paginator(links, 10)
+        page = self.request.GET.get('page')
+        links = paginator.get_page(page)
+
+        context['links'] = links
         return context

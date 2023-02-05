@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@900&display=swap');
 
+h1, h2, h3, h4, h5, h6, a, th {
+    font-weight: bold;
+    color: #333;
+    font-family: 'Overpass', sans-serif;
+}
+
 form {
   padding: 40px;
   background-color: rgba(242, 242, 242, 0.8);
@@ -81,7 +87,7 @@ input[type="submit"]:hover {
 
 .btn-primary {
   border-radius: 20px;
-  padding: 15px 20px;
+  padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
   font-size: 16px;
