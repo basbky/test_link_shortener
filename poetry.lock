@@ -331,6 +331,21 @@ files = [
 ]
 
 [[package]]
+name = "model-mommy"
+version = "2.0.0"
+description = "Smart object creation facility for Django."
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "model_mommy-2.0.0-py2.py3-none-any.whl", hash = "sha256:40d6e740aad7509e696a324b94cf2b0a104da93c3d4a7924cea1be3d0eb95b4f"},
+    {file = "model_mommy-2.0.0.tar.gz", hash = "sha256:3d332afce941c57f1990f45b083ba13252ba74fcd1ae43fd047e5af7a70fb312"},
+]
+
+[package.dependencies]
+django = ">=1.11.0"
+
+[[package]]
 name = "mypy-extensions"
 version = "1.0.0"
 description = "Type system extensions for programs checked with the mypy type checker."
@@ -796,4 +811,4 @@ testing = ["coverage (>=6.2)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "a4ba7b7545932c9069e33aed9e6ef20e318c7080549e58c75c1ddbf265847e37"
+content-hash = "736901374950b0e234d77970cf2c10bcf64571e02eea6070e430de52da0123f2"
