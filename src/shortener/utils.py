@@ -2,20 +2,35 @@ import csv
 import random
 import string
 
+from typing import List
+
 import openpyxl
 
+from django.core.paginator import Page
 from django.core.paginator import Paginator
 
 from .models import Link
 
 
-def generate_short_hash(length=6):
+def generate_short_hash(length: int = 6) -> str:
+    """
+    Генерирует случайный хеш для сокращенной ссылки
+
+    :param length: Длина хеша
+    :return: Строка размером length, которая может быть путем к сокращенной ссылке
+    """
     return ''.join(
         random.choices(string.ascii_letters + string.digits, k=length)
     )
 
 
-def save_url_mapping(url):
+def save_url_mapping(url: str) -> str:
+    """
+    Сохраняет маппинг хеша к оригинальной ссылке
+
+    :param url: Оригинальная ссылка.
+    :return: Хеш для доступа к оригинальной ссылке.
+    """
     while True:
         short_hash = generate_short_hash()
         if not Link.objects.filter(short_hash=short_hash).exists():
@@ -24,18 +39,39 @@ def save_url_mapping(url):
     return short_hash
 
 
-def get_sorted_links(sort_by='views_counter'):
+def get_sorted_links(sort_by: str = 'views_counter') -> List[Link]:
+    """
+    Получает все объекты типа "Link", отсортированные в заданной последовательности
+
+    :param sort_by: Поле, задающее последовательность сортировки объектов
+    :return: list объектов типа "Link", отсортированных в заданной последовательности
+    """
     links = Link.objects.all().order_by(sort_by)
     return links
 
 
-def get_paginated_links(links, page_size=10, page_number=1):
+def get_paginated_links(
+    links, page_size: int = 10, page_number: int = 1
+) -> Page:
+    """
+    Получает все объекты типа "Link" после пагинации
+
+    :param links: Список объектов типа "Link" подлежащих пагинации
+    :param page_size: Количество объектов для показа на странице
+    :param page_number: Количество страниц для показа на странице
+    :return: Объект типа "Page", содержащий ссылки для показа на определенной странице
+    """
     paginator = Paginator(links, page_size)
     links = paginator.get_page(page_number)
     return links
 
 
-def create_csv_file(links):
+def create_csv_file(links: List[Link]) -> None:
+    """
+    Генерирует .csv файл со статистикой переходов по сокращенным сылкам
+
+    :param links: Список ссылок для включения в .csv файл
+    """
     with open('statistics.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(
@@ -47,7 +83,13 @@ def create_csv_file(links):
             )
 
 
-def create_xlsx_file(data):
+def create_xlsx_file(data: List[Link]) -> None:
+    """
+    Генерирует .xlsx файл со статистикой переходов по сокращенным сылкам
+
+    :param data: Список ссылок для включения в .xlsx файл
+    """
+
     wb = openpyxl.Workbook()
     ws = wb.active
 
