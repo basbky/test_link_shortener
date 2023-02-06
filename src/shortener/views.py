@@ -100,6 +100,7 @@ class StatisticsView(TemplateView):
                 'Content-Disposition'
             ] = 'attachment; filename="statistics.csv"'
             return response
+
         # Если в GET запросе передан параметр download_xlsx, то статистика выгружается в .xlsx файле
         elif request.GET.get('download_xlsx'):
             create_xlsx_file(links)
