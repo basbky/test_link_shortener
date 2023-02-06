@@ -18,6 +18,9 @@ def db_host_fixture(request):
 
 @pytest.mark.django_db
 def test_link_model(db_host_fixture):
+    """
+    Тестирует модель ссылки
+    """
     link = Link.objects.create(
         original_url="https://www.example.com", short_hash="abcdef"
     )
